@@ -138,6 +138,13 @@ public class Model extends Observable {
      * */
     public static boolean emptySpaceExists(Board b) {
         // TODO: Fill in this function.
+        for(int row = 0; row < b.size(); row++) {
+            for(int col = 0; col < b.size(); col++) {
+                if (b.tile(row,col) == null) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
@@ -148,6 +155,16 @@ public class Model extends Observable {
      */
     public static boolean maxTileExists(Board b) {
         // TODO: Fill in this function.
+        for(int row = 0; row < b.size(); row++) {
+            for(int col = 0; col < b.size(); col++) {
+                if (b.tile(row,col) == null) {
+                    continue;
+                }
+                if(b.tile(row,col).value() == MAX_PIECE) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
@@ -159,6 +176,21 @@ public class Model extends Observable {
      */
     public static boolean atLeastOneMoveExists(Board b) {
         // TODO: Fill in this function.
+        for(int row = 0; row < b.size(); row++) {
+            for(int col = 0;col < b.size(); col++) {
+                if (b.tile(row,col) == null) {
+                    return true;
+                } else if () { //Check top adjacent value
+                    return true;
+                } else if () { //Check left adjacent value
+                    return true;
+                } else if () { //Check right adjacent value
+                    return true;
+                } else if () { //Check bottom adjacent value
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
