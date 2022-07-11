@@ -113,6 +113,20 @@ public class Model extends Observable {
         // TODO: Modify this.board (and perhaps this.score) to account
         // for the tilt to the Side SIDE. If the board changed, set the
         // changed local variable to true.
+        for(int row = 0; row < board.size(); row++) {
+            for(int col = 0; col < board.size(); col++) {
+                Tile t = this.board.tile(row, col);
+                if (board.tile(row,col) != null) {
+                    board.move(row,3,t);
+                    changed = true;
+                    score = score + 3;
+                }
+            }
+        }
+
+
+
+
 
         checkGameOver();
         if (changed) {
@@ -180,13 +194,13 @@ public class Model extends Observable {
             for(int col = 0;col < b.size(); col++) {
                 if (b.tile(row,col) == null) {
                     return true;
-                } else if () { //Check top adjacent value
+                } else if ((row!=0) && b.tile(row,col).value() == b.tile(row - 1,col).value()) { //Check LEFT adjacent value
                     return true;
-                } else if () { //Check left adjacent value
+                } else if ((row!=3) && b.tile(row,col).value() == b.tile(row+1,col).value()){ //Check BOTTOM adjacent value
                     return true;
-                } else if () { //Check right adjacent value
+                } else if ((col!=0) && b.tile(row,col).value() == b.tile(row, col - 1).value()) { //Check TOP adjacent value
                     return true;
-                } else if () { //Check bottom adjacent value
+                } else if ((col!=3) && b.tile(row,col).value() == b.tile(row, col + 1).value()) { //Check RIGHT adjacent value
                     return true;
                 }
             }
