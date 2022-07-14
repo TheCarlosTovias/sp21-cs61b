@@ -4,31 +4,41 @@ import static org.junit.jupiter.api.Assertions.*;
 class SortTest {
 
    /** Test the Sort.sort method. */
-   public static void testSort() {
+   @Test
+   public void testSort() {
        String[] input = {"i", "have", "an", "egg"};
        String[] expected = {"an", "egg", "have", "i"};
 
        Sort.sort(input);
 
-       org.junit.jupiter.api.Assertions.assertArrayEquals(expected, input);
+       assertArrayEquals(expected, input);
    }
 
     /** Test the Sort.findSmallest method. */
-     public static void testFindSmallest() {
+    @Test
+     public void testFindSmallest() {
          String[] input = {"i", "have", "an", "egg"};
-         String expected = "an";
+         int expected = 2;
 
-         String actual = Sort.findSmallest(input);
-         org.junit.jupiter.api.Assertions.assertEquals(expected, actual);
+         int actual = Sort.findSmallest(input, 0);
+         assertEquals(expected, actual);
 
          String[] input2 = {"there", "are", "many", "pigs"};
-         String expected2 = "are";
+         int expected2 = 2;
 
-         String actual2 = Sort.findSmallest(input2);
-         org.junit.jupiter.api.Assertions.assertEquals(expected2, actual2);
+         int actual2 = Sort.findSmallest(input2, 2);
+         assertEquals(expected2, actual2);
      }
 
-     public static void main(String[] args) {
-         testFindSmallest();
-     }
+    /** Test the Sort.swap method. */
+    @Test
+    public void testSwap() {
+        String[] input = {"i", "have", "an", "egg"};
+        int a = 0;
+        int b = 2;
+        String[] expected = {"an", "have", "i", "egg"};
+        Sort.swap(input, a, b);
+
+        assertArrayEquals(expected, input);
+    }
 }

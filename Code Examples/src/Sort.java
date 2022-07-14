@@ -2,19 +2,37 @@ public class Sort {
     /** Sorts strings destructively. */
 
     public static void sort(String[] x) {
-        //Find the smallest item
-        //Move it to the front
-        //Selection sort the rest (using recursion??)
+        sort(x,0);
     }
 
-    public static String findSmallest(String[] x) {
-        int smallestIndex = 0;
-        for(int i = 0; i < x.length; i++) {
+    /**Sorts x starting at position start. */
+    private static void sort(String[] x,  int start) {
+        if (start == x.length) {
+            return;
+        }
+        int smallestIndex = findSmallest(x,start);
+        swap(x,start,smallestIndex);
+        sort(x, start + 1);
+    }
+
+
+    /** Swap item a with b */
+    public static void swap(String[] x, int a, int b) {
+         String temp = x[a];
+        x[a] = x[b];
+        x[b] = temp;
+    }
+
+
+    /** Return the index of smallest String in x, starting at start */
+    public static int findSmallest(String[] x, int start) {
+        int smallestIndex = start;
+        for(int i = start; i < x.length; i++) {
             int cmp = x[i].compareTo(x[smallestIndex]);
             if (cmp < 0) {
                 smallestIndex = i;
             }
         }
-        return x[smallestIndex];
+        return smallestIndex;
     }
 }
