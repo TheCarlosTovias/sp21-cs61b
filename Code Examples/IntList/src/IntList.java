@@ -15,6 +15,7 @@ public class IntList {
         return 1 + rest.size();
     }
 
+
     public int iterSize() {
         IntList p = this;
         int count = 0;
@@ -50,8 +51,8 @@ public class IntList {
     public static void main(String[] args) {
 
         IntList L = new IntList(15, null);
-        L = new IntList(10,L);
-        L = new IntList(5,L);
+        L = new IntList(10, L);
+        L = new IntList(5, L);
 
         System.out.println(L.size());
         System.out.println(L.iterSize());
