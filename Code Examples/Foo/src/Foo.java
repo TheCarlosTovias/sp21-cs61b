@@ -6,13 +6,13 @@ public class Foo {
         this.y = y;
     }
 
-    public static void switcheroo (Foo a, Foo b) {
+    public static void switcheroo(Foo a, Foo b) {
         Foo temp = a;
         a = b;
         b = temp;
     }
 
-    public static void fliperoo (Foo a, Foo b) {
+    public static void fliperoo(Foo a, Foo b) {
         Foo temp = new Foo(a.x, a.y);
         a.x = b.x;
         a.y = b.y;
@@ -20,7 +20,7 @@ public class Foo {
         b.y = temp.y;
     }
 
-    public static void swaperoo (Foo a, Foo b) {
+    public static void swaperoo(Foo a, Foo b) {
         Foo temp = a;
         a.x = b.x;
         a.y = b.y;
@@ -34,12 +34,13 @@ public class Foo {
     }
 
     public static void main(String[] args) {
-        Foo foobar = new Foo(10,20);
-        Foo baz = new Foo(30,40);
-        switcheroo(foobar, baz);
+        Foo foobar = new Foo(10, 20);
+        Foo baz = new Foo(30, 40);
+//        switcheroo(foobar, baz);
+//        System.out.println(baz);
+//        fliperoo(foobar, baz);
+//        System.out.println(baz);
+        swaperoo(foobar, baz);
         System.out.println(baz);
-          //fliperoo(foobar, baz);
-//          System.out.println(baz);
-     //     swaperoo(foobar, baz);
     }
 }
