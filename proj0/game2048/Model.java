@@ -123,18 +123,33 @@ public class Model extends Observable {
 //                }
 //            }
 //        }
+
+
+//        board.setViewingPerspective(Side.NORTH);
+//        for(int row = 2; row >= 0; row--) {
+//            if (this.board.tile(2,row + 1) == null) {
+//                board.move(2,row+1,this.board.tile(2,row));
+//                setChanged();
+//                return true;
+//            } else if (this.board.tile(2, row + 1) == this.board.tile(2, row)) {
+//                Tile t = this.board.tile(2,row);
+//                t.merge(2,row + 1,this.board.tile(2,row + 1));
+//                score = score + t.value() + this.board.tile(2, row + 1).value();
+//                setChanged();
+//                return true;
+//            }
+//        }
+
         board.setViewingPerspective(Side.NORTH);
-        for(int row = 2; row >= 0; row--) {
-            if (this.board.tile(2,row + 1) == null) {
-                board.move(2,row+1,this.board.tile(2,row));
-                setChanged();
-                return true;
-            } else if (this.board.tile(2, row + 1) == this.board.tile(2, row)) {
-                Tile t = this.board.tile(2,row);
-                t.merge(2,row + 1,this.board.tile(2,row + 1));
-                score = score + t.value() + this.board.tile(2, row + 1).value();
-                setChanged();
-                return true;
+        //Iterates through each row of a column starting from 2nd position
+        for (int row = 2; row > 0; row--) {
+            //Checks to see if tile is equal in value to the tile above it
+            if(this.board.tile(2,row) == this.board.tile(2, row + 1)) {
+
+            }
+            //Checks to see if the tile is equal in value to the tile below it
+            else if (this.board.tile(2,row) == this.board.tile(2,row - 1)) {
+
             }
         }
 
