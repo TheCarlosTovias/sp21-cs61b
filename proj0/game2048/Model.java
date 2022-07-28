@@ -143,49 +143,29 @@ public class Model extends Observable {
         // TODO: Modify this.board (and perhaps this.score) to account
         // for the tilt to the Side SIDE. If the board changed, set the
         // changed local variable to true.
-//        for(int row = 0; row < board.size(); row++) {
-//            for(int col = 0; col < board.size(); col++) {
-//                Tile t = this.board.tile(row, col);
-//                if (board.tile(row,col) != null) {
-//                    board.move(row,3,t);
-//                    changed = true;
-//                    score = score + 3;
-//                }
-//            }
-//        }
-
-
-//        board.setViewingPerspective(Side.NORTH);
-//        for(int row = 2; row >= 0; row--) {
-//            if (this.board.tile(2,row + 1) == null) {
-//                board.move(2,row+1,this.board.tile(2,row));
-//                setChanged();
-//                return true;
-//            } else if (this.board.tile(2, row + 1) == this.board.tile(2, row)) {
-//                Tile t = this.board.tile(2,row);
-//                t.merge(2,row + 1,this.board.tile(2,row + 1));
-//                score = score + t.value() + this.board.tile(2, row + 1).value();
-//                setChanged();
-//                return true;
-//            }
-//        }
-
         board.setViewingPerspective(Side.NORTH);
         //Iterates through each row of a column starting from 2nd position
-        for (int row = 2; row > 0; row--) {
-            int current = row;
-            while (current >= 0) {
-                if (this.board.tile(2, current) == this.board.tile(2, current + 1)) {
+        int current = 1;
+        int row = 2;
+        while (current <= 3) {
+            while (row < 3) {
+                if (this.board.tile(2, row) == this.board.tile(2, row + 1)) {
                     Tile t = this.board.tile(2, current);
-                    t.merge(2, current + 1, this.board.tile(2, current + 1));
+                    t.merge(2, row + 1, this.board.tile(2, row + 1));
+                    setChanged();
+                    return true;
+                } else if (this.board.tile(2, row + 1) == null) {
+                    Tile t = this.board.tile(2, row);
+                    board.move(2, row + 1, t);
                     setChanged();
                     return true;
                 }
-                current--;
+                row++;
             }
-            //Checks to see if tile is equal in value to the tile above it
-
+            current++;
+            row--;
         }
+        //Checks to see if tile is equal in value to the tile above it
 
 
         checkGameOver();
