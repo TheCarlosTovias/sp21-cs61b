@@ -145,28 +145,34 @@ public class Model extends Observable {
         // changed local variable to true.
         board.setViewingPerspective(Side.NORTH);
         //Iterates through each row of a column starting from 2nd position
-        int current = 1;
-        int row = 2;
-        while (current <= 3) {
-            while (row < 3) {
-                if (this.board.tile(2, row) == this.board.tile(2, row + 1)) {
-                    Tile t = this.board.tile(2, current);
-                    t.merge(2, row + 1, this.board.tile(2, row + 1));
-                    setChanged();
-                    return true;
-                } else if (this.board.tile(2, row + 1) == null) {
-                    Tile t = this.board.tile(2, row);
-                    board.move(2, row + 1, t);
-                    setChanged();
-                    return true;
-                }
-                row++;
-            }
-            current++;
-            row--;
-        }
-        //Checks to see if tile is equal in value to the tile above it
+//        int current = 1;
+//        int row = 2;
+//        while (current <= 3) {
+//            while (row < 3) {
+//                if (this.board.tile(2, row) == this.board.tile(2, row + 1)) {
+//                    Tile t = this.board.tile(2, current);
+//                    t.merge(2, row + 1, this.board.tile(2, row + 1));
+//                    setChanged();
+//                    return true;
+//                } else if (this.board.tile(2, row + 1) == null) {
+//                    Tile t = this.board.tile(2, row);
+//                    board.move(2, row + 1, t);
+//                    setChanged();
+//                    return true;
+//                }
+//                row++;
+//            }
+//            current++;
+//            row--;
+//        }
+        //Use double nested for loop to check one column
+        for (int executeThreeTimes = 2; executeThreeTimes > 0; executeThreeTimes--) {
+            for (int row = 2; row < executeThreeTimes; row++) {
+                if (this.board.tile(2, executeThreeTimes) == this.board.tile(2, row)) {
 
+                }
+            }
+        }
 
         checkGameOver();
         if (changed) {
